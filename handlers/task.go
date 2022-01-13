@@ -2,57 +2,12 @@ package handlers
 
 import (
 	"example/web-service-gin/models"
-	_ "example/web-service-gin/models"
-	"example/web-service-gin/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-type HandlersT struct {
-	Platform *services.ServicesT
-}
-
-type ResponseT struct {
-	Status int         `json:"status"`
-	Data   interface{} `json:"data"`
-}
-
-func NewrouterT(platform *services.ServicesT) *gin.Engine {
-	router := gin.Default()
-
-	h := HandlersT{Platform: platform}
-
-	tList := router.Group("/t_list")
-	tList.GET("/", h.GetAllTasks)
-	tList.GET("/:id", h.GetTask)
-	tList.POST("/", h.CreateTask)
-	tList.PUT("/:id", h.UpdateTask)
-	tList.DELETE("/:id", h.DeleteTask)
-
-	router.GET("/", h.HelloWorld)
-
-	return router
-}
-
 func (h *HandlersT) HelloWorld(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "Hello World!")
-}
-
-func (h *HandlersT) GetAllTasks(ctx *gin.Context) {
-	var response ResponseT
-
-	tList, err := h.Platform.GetAllTasks()
-	if err != nil {
-		response.Data = err.Error()
-		response.Status = http.StatusInternalServerError
-		ctx.JSON(http.StatusBadRequest, response)
-		return
-	}
-
-	response.Data = tList
-	response.Status = http.StatusOK
-
-	ctx.JSON(http.StatusOK, response)
 }
 
 func (h *HandlersT) GetTask(ctx *gin.Context) {

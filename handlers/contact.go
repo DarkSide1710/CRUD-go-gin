@@ -2,41 +2,29 @@ package handlers
 
 import (
 	"example/web-service-gin/models"
-	"net/http"
-
-	_ "example/web-service-gin/models"
-	"example/web-service-gin/service"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
-
-type Handlers struct {
-	Platform *services.Services
-}
-
-type Response struct {
-	Status int         `json:"status"`
-	Data   interface{} `json:"data"`
-}
-
-func NewRouter(platform *services.Services) *gin.Engine {
-	router := gin.Default()
-
-	h := Handlers{Platform: platform}
-
-	cList := router.Group("/cList")
-	cList.GET("/", h.GetAllContacts)
-	cList.GET("/:id", h.GetContact)
-	cList.POST("/", h.CreateContact)
-	cList.PUT("/:id", h.UpdateContact)
-	cList.DELETE("/:id", h.DeleteContact)
-
-	router.GET("/", h.HelloWorld)
-
-	return router
-}
 
 func (h *Handlers) HelloWorld(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "Hello World!")
+}
+
+func (h *HandlersT) GetAllTasks(ctx *gin.Context) {
+	var response ResponseT
+
+	tList, err := h.Platform.GetAllTasks()
+	if err != nil {
+		response.Data = err.Error()
+		response.Status = http.StatusInternalServerError
+		ctx.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	response.Data = tList
+	response.Status = http.StatusOK
+
+	ctx.JSON(http.StatusOK, response)
 }
 
 func (h *Handlers) GetAllContacts(ctx *gin.Context) {

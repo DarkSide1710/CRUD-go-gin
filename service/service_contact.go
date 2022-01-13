@@ -2,13 +2,12 @@ package services
 
 import (
 	"example/web-service-gin/models"
-	_ "example/web-service-gin/models"
 	"example/web-service-gin/repository"
 	"github.com/google/uuid"
 )
 
 type Services struct {
-	Repository *repository.Contact
+	Repository *repository.ContactDB
 }
 
 func NewServices() *Services {

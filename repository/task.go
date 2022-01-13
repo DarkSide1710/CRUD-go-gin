@@ -7,11 +7,11 @@ import (
 	_ "example/web-service-gin/models"
 )
 
-type Task struct {
+type TaskDB struct {
 	DB map[string]models.Tasklist
 }
 
-func NewRepositoryTask() *Task {
+func NewRepositoryTask() *TaskDB {
 	example := models.Tasklist{
 		ID:        "1",
 		Name:      "Example Tittle",
@@ -22,12 +22,12 @@ func NewRepositoryTask() *Task {
 		DueDate:   "324",
 	}
 
-	return &Task{
+	return &TaskDB{
 		DB: map[string]models.Tasklist{example.ID: example},
 	}
 }
 
-func (repo *Task) GetAllTasks() ([]models.Tasklist, error) {
+func (repo *TaskDB) GetAllTasks() ([]models.Tasklist, error) {
 	var tLists []models.Tasklist
 
 	for _, tList := range repo.DB {
@@ -37,7 +37,7 @@ func (repo *Task) GetAllTasks() ([]models.Tasklist, error) {
 
 }
 
-func (repo *Task) GetTask(id string) (models.Tasklist, error) {
+func (repo *TaskDB) GetTask(id string) (models.Tasklist, error) {
 	if tList, exist := repo.DB[id]; exist {
 		return tList, nil
 	}
@@ -45,7 +45,7 @@ func (repo *Task) GetTask(id string) (models.Tasklist, error) {
 	return models.Tasklist{}, errors.New("not found")
 }
 
-func (repo *Task) CreateTask(tList models.Tasklist) (models.Tasklist, error) {
+func (repo *TaskDB) CreateTask(tList models.Tasklist) (models.Tasklist, error) {
 	if _, exist := repo.DB[tList.ID]; exist {
 		return models.Tasklist{}, errors.New("already exist")
 	}
@@ -55,7 +55,7 @@ func (repo *Task) CreateTask(tList models.Tasklist) (models.Tasklist, error) {
 	return tList, nil
 }
 
-func (repo *Task) UpdateTask(tList models.Tasklist) error {
+func (repo *TaskDB) UpdateTask(tList models.Tasklist) error {
 	if _, exist := repo.DB[tList.ID]; !exist {
 		return errors.New("not found")
 	}
@@ -65,7 +65,7 @@ func (repo *Task) UpdateTask(tList models.Tasklist) error {
 	return nil
 }
 
-func (repo *Task) DeleteTask(id string) error {
+func (repo *TaskDB) DeleteTask(id string) error {
 	if _, exist := repo.DB[id]; !exist {
 		return errors.New("not found")
 	}

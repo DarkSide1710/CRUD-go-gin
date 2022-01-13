@@ -7,7 +7,7 @@ import (
 )
 
 type ServicesT struct {
-	Repository *repository.Task
+	Repository *repository.TaskDB
 }
 
 func NewservicesT() *ServicesT {
