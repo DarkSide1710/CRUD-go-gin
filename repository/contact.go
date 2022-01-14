@@ -2,16 +2,15 @@ package repository
 
 import (
 	"errors"
-	"example/web-service-gin/models"
 
-	_ "example/web-service-gin/models"
+	"DarkSide1710/CRUD-go-gin/models"
 )
 
-type ContactDB struct {
+type contactDB struct {
 	DB map[string]models.Contactlist
 }
 
-func NewRepository() *ContactDB {
+func NewRepository() *contactDB {
 	example := models.Contactlist{
 		ID:        "1",
 		FirstName: "Example Name",
@@ -21,12 +20,12 @@ func NewRepository() *ContactDB {
 		Position:  "director",
 	}
 
-	return &ContactDB{
+	return &contactDB{
 		DB: map[string]models.Contactlist{example.ID: example},
 	}
 }
 
-func (repo *ContactDB) GetAllContacts() ([]models.Contactlist, error) {
+func (repo contactDB) GetAllContacts() ([]models.Contactlist, error) {
 	var cLists []models.Contactlist
 
 	for _, cList := range repo.DB {
@@ -36,7 +35,7 @@ func (repo *ContactDB) GetAllContacts() ([]models.Contactlist, error) {
 	return cLists, nil
 }
 
-func (repo *ContactDB) GetContact(id string) (models.Contactlist, error) {
+func (repo contactDB) GetContact(id string) (models.Contactlist, error) {
 	if cList, exist := repo.DB[id]; exist {
 		return cList, nil
 	}
@@ -44,7 +43,7 @@ func (repo *ContactDB) GetContact(id string) (models.Contactlist, error) {
 	return models.Contactlist{}, errors.New("not found")
 }
 
-func (repo *ContactDB) CreateContact(cList models.Contactlist) (models.Contactlist, error) {
+func (repo contactDB) CreateContact(cList models.Contactlist) (models.Contactlist, error) {
 	if _, exist := repo.DB[cList.ID]; exist {
 		return models.Contactlist{}, errors.New("already exist")
 	}
@@ -54,7 +53,7 @@ func (repo *ContactDB) CreateContact(cList models.Contactlist) (models.Contactli
 	return cList, nil
 }
 
-func (repo *ContactDB) UpdateContact(cList models.Contactlist) error {
+func (repo contactDB) UpdateContact(cList models.Contactlist) error {
 	if _, exist := repo.DB[cList.ID]; !exist {
 		return errors.New("not found")
 	}
@@ -64,7 +63,7 @@ func (repo *ContactDB) UpdateContact(cList models.Contactlist) error {
 	return nil
 }
 
-func (repo *ContactDB) DeleteContact(id string) error {
+func (repo contactDB) DeleteContact(id string) error {
 	if _, exist := repo.DB[id]; !exist {
 		return errors.New("not found")
 	}

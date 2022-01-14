@@ -1,13 +1,12 @@
 package handlers
 
 import (
-	_ "example/web-service-gin/models"
-	"example/web-service-gin/service"
+	services "DarkSide1710/CRUD-go-gin/service"
 	"github.com/gin-gonic/gin"
 )
 
 type Handlers struct {
-	Platform *services.Services
+	Platform services.Container
 }
 
 type Response struct {
@@ -16,7 +15,7 @@ type Response struct {
 }
 
 type HandlersT struct {
-	Platform *services.ServicesT
+	Platform services.Container
 }
 
 type ResponseT struct {
@@ -24,7 +23,7 @@ type ResponseT struct {
 	Data   interface{} `json:"data"`
 }
 
-func NewRouter(platform *services.Services) *gin.Engine {
+func NewRouter(platform services.Container) *gin.Engine {
 	router := gin.Default()
 
 	h := Handlers{Platform: platform}
@@ -40,7 +39,7 @@ func NewRouter(platform *services.Services) *gin.Engine {
 
 	return router
 }
-func NewrouterT(platform *services.ServicesT) *gin.Engine {
+func NewrouterT(platform services.Container) *gin.Engine {
 	router := gin.Default()
 
 	h := HandlersT{Platform: platform}

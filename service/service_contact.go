@@ -1,33 +1,33 @@
 package services
 
 import (
-	"example/web-service-gin/models"
-	"example/web-service-gin/repository"
+	"DarkSide1710/CRUD-go-gin/models"
+	"DarkSide1710/CRUD-go-gin/repository"
 	"github.com/google/uuid"
 )
 
-type Services struct {
-	Repository *repository.ContactDB
+type contactService struct {
+	Repository repository.Repository
 }
 
-func NewServices() *Services {
-	return &Services{
+func newContactService() *contactService {
+	return &contactService{
 		Repository: repository.NewRepository(),
 	}
 }
 
-func (s *Services) GetAllContacts() ([]models.Contactlist, error) {
-	return s.Repository.GetAllContacts()
+func (s contactService) GetAllContacts() ([]models.Contactlist, error) {
+	return s.Repository.Contact().GetAllContacts()
 }
 
-func (s *Services) GetContact(id string) (models.Contactlist, error) {
-	return s.Repository.GetContact(id)
+func (s contactService) GetContact(id string) (models.Contactlist, error) {
+	return s.Repository.Contact().GetContact(id)
 }
 
-func (s *Services) CreateContact(cList models.Contactlist) (models.Contactlist, int, error) {
+func (s contactService) CreateContact(cList models.Contactlist) (models.Contactlist, int, error) {
 	cList.ID = uuid.New().String()
 
-	cList, err := s.Repository.CreateContact(cList)
+	cList, err := s.Repository.Contact().CreateContact(cList)
 	if err != nil {
 		return models.Contactlist{}, 400, err
 	}
@@ -35,16 +35,16 @@ func (s *Services) CreateContact(cList models.Contactlist) (models.Contactlist, 
 	return cList, 201, nil
 }
 
-func (s *Services) UpdateContact(cList models.Contactlist) (models.Contactlist, error) {
-	if err := s.Repository.UpdateContact(cList); err != nil {
+func (s contactService) UpdateContact(cList models.Contactlist) (models.Contactlist, error) {
+	if err := s.Repository.Contact().UpdateContact(cList); err != nil {
 		return models.Contactlist{}, err
 	}
 
 	return cList, nil
 }
 
-func (s *Services) DeleteContact(id string) error {
-	if err := s.Repository.DeleteContact(id); err != nil {
+func (s contactService) DeleteContact(id string) error {
+	if err := s.Repository.Contact().DeleteContact(id); err != nil {
 		return err
 	}
 

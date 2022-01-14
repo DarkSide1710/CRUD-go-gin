@@ -1,6 +1,11 @@
 package services
 
-import "example/web-service-gin/models"
+import "DarkSide1710/CRUD-go-gin/models"
+
+type Container interface {
+	Contact() Contact
+	Task() Task
+}
 
 type Contact interface {
 	GetAllContacts() ([]models.Contactlist, error)

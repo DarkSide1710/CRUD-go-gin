@@ -1,15 +1,17 @@
 package main
 
 import (
-	"example/web-service-gin/handlers"
-	"example/web-service-gin/service"
+	"DarkSide1710/CRUD-go-gin/handlers"
+	repository "DarkSide1710/CRUD-go-gin/repository"
+	services "DarkSide1710/CRUD-go-gin/service"
 )
 
 func main() {
 
-	services := services.NewServices()
+	repo := repository.Contact()
+	service := services.New(repo)
 
-	router := handlers.NewRouter(services)
+	router := handlers.NewRouter(service)
 
 	router.Run(":8080")
 

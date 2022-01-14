@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"example/web-service-gin/models"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"DarkSide1710/CRUD-go-gin/models"
+	"github.com/gin-gonic/gin"
 )
 
 func (h *HandlersT) HelloWorld(ctx *gin.Context) {
@@ -14,7 +15,7 @@ func (h *HandlersT) GetTask(ctx *gin.Context) {
 	var response ResponseT
 	id := ctx.Param("id")
 
-	tList, err := h.Platform.GetTask(id)
+	tList, err := h.Platform.Task().GetTask(id)
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
@@ -40,7 +41,7 @@ func (h *HandlersT) CreateTask(ctx *gin.Context) {
 		return
 	}
 
-	tList, code, err := h.Platform.CreateTask(request)
+	tList, code, err := h.Platform.Task().CreateTask(request)
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = code
@@ -69,7 +70,7 @@ func (h *HandlersT) UpdateTask(ctx *gin.Context) {
 
 	request.ID = id
 
-	tList, err := h.Platform.UpdateTask(request)
+	tList, err := h.Platform.Task().UpdateTask(request)
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
@@ -87,7 +88,7 @@ func (h *HandlersT) DeleteTask(ctx *gin.Context) {
 	var response Response
 	id := ctx.Param("id")
 
-	if err := h.Platform.DeleteTask(id); err != nil {
+	if err := h.Platform.Task().DeleteTask(id); err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
 		ctx.JSON(http.StatusInternalServerError, response)

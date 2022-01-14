@@ -1,6 +1,11 @@
 package repository
 
-import "example/web-service-gin/models"
+import "DarkSide1710/CRUD-go-gin/models"
+
+type Repository interface {
+	Contact() Contact
+	Task() Task
+}
 
 type Contact interface {
 	GetAllContacts() ([]models.Contactlist, error)

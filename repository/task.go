@@ -2,16 +2,15 @@ package repository
 
 import (
 	"errors"
-	models "example/web-service-gin/models"
 
-	_ "example/web-service-gin/models"
+	"DarkSide1710/CRUD-go-gin/models"
 )
 
-type TaskDB struct {
+type taskDB struct {
 	DB map[string]models.Tasklist
 }
 
-func NewRepositoryTask() *TaskDB {
+func NewRepositoryTask() *taskDB {
 	example := models.Tasklist{
 		ID:        "1",
 		Name:      "Example Tittle",
@@ -22,12 +21,12 @@ func NewRepositoryTask() *TaskDB {
 		DueDate:   "324",
 	}
 
-	return &TaskDB{
+	return &taskDB{
 		DB: map[string]models.Tasklist{example.ID: example},
 	}
 }
 
-func (repo *TaskDB) GetAllTasks() ([]models.Tasklist, error) {
+func (repo taskDB) GetAllTasks() ([]models.Tasklist, error) {
 	var tLists []models.Tasklist
 
 	for _, tList := range repo.DB {
@@ -37,7 +36,7 @@ func (repo *TaskDB) GetAllTasks() ([]models.Tasklist, error) {
 
 }
 
-func (repo *TaskDB) GetTask(id string) (models.Tasklist, error) {
+func (repo taskDB) GetTask(id string) (models.Tasklist, error) {
 	if tList, exist := repo.DB[id]; exist {
 		return tList, nil
 	}
@@ -45,7 +44,7 @@ func (repo *TaskDB) GetTask(id string) (models.Tasklist, error) {
 	return models.Tasklist{}, errors.New("not found")
 }
 
-func (repo *TaskDB) CreateTask(tList models.Tasklist) (models.Tasklist, error) {
+func (repo taskDB) CreateTask(tList models.Tasklist) (models.Tasklist, error) {
 	if _, exist := repo.DB[tList.ID]; exist {
 		return models.Tasklist{}, errors.New("already exist")
 	}
@@ -55,7 +54,7 @@ func (repo *TaskDB) CreateTask(tList models.Tasklist) (models.Tasklist, error) {
 	return tList, nil
 }
 
-func (repo *TaskDB) UpdateTask(tList models.Tasklist) error {
+func (repo taskDB) UpdateTask(tList models.Tasklist) error {
 	if _, exist := repo.DB[tList.ID]; !exist {
 		return errors.New("not found")
 	}
@@ -65,7 +64,7 @@ func (repo *TaskDB) UpdateTask(tList models.Tasklist) error {
 	return nil
 }
 
-func (repo *TaskDB) DeleteTask(id string) error {
+func (repo taskDB) DeleteTask(id string) error {
 	if _, exist := repo.DB[id]; !exist {
 		return errors.New("not found")
 	}

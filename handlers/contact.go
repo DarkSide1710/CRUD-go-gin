@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"example/web-service-gin/models"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"DarkSide1710/CRUD-go-gin/models"
+	"github.com/gin-gonic/gin"
 )
 
 func (h *Handlers) HelloWorld(ctx *gin.Context) {
@@ -13,7 +14,7 @@ func (h *Handlers) HelloWorld(ctx *gin.Context) {
 func (h *HandlersT) GetAllTasks(ctx *gin.Context) {
 	var response ResponseT
 
-	tList, err := h.Platform.GetAllTasks()
+	tList, err := h.Platform.Contact().GetAllContacts()
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
@@ -30,7 +31,7 @@ func (h *HandlersT) GetAllTasks(ctx *gin.Context) {
 func (h *Handlers) GetAllContacts(ctx *gin.Context) {
 	var response Response
 
-	cList, err := h.Platform.GetAllContacts()
+	cList, err := h.Platform.Contact().GetAllContacts()
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
@@ -48,7 +49,7 @@ func (h *Handlers) GetContact(ctx *gin.Context) {
 	var response Response
 	id := ctx.Param("id")
 
-	cList, err := h.Platform.GetContact(id)
+	cList, err := h.Platform.Contact().GetContact(id)
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
@@ -74,7 +75,7 @@ func (h *Handlers) CreateContact(ctx *gin.Context) {
 		return
 	}
 
-	cList, code, err := h.Platform.CreateContact(request)
+	cList, code, err := h.Platform.Contact().CreateContact(request)
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = code
@@ -103,7 +104,7 @@ func (h *Handlers) UpdateContact(ctx *gin.Context) {
 
 	request.ID = id
 
-	cList, err := h.Platform.UpdateContact(request)
+	cList, err := h.Platform.Contact().UpdateContact(request)
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
@@ -121,7 +122,7 @@ func (h *Handlers) DeleteContact(ctx *gin.Context) {
 	var response Response
 	id := ctx.Param("id")
 
-	if err := h.Platform.DeleteContact(id); err != nil {
+	if err := h.Platform.Contact().DeleteContact(id); err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
 		ctx.JSON(http.StatusInternalServerError, response)
