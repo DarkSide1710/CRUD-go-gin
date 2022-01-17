@@ -16,3 +16,4 @@ CREATE TABLE IF NOT EXISTS "task" (
     "createby" varchar references contacts(id),
     "duedate" varchar NOT NULL
 );
+

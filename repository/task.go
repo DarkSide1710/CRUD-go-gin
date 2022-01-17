@@ -1,13 +1,15 @@
 package repository
 
 import (
-	"errors"
+	"fmt"
+	"github.com/google/uuid"
+	sqlx "github.com/jmoiron/sqlx"
 
 	"DarkSide1710/CRUD-go-gin/models"
 )
 
 type taskDB struct {
-	DB map[string]models.Tasklist
+	DB *sqlx.DB
 }
 
 func newTask() *taskDB {
@@ -22,54 +24,56 @@ func newTask() *taskDB {
 	}
 
 	return &taskDB{
-		DB: map[string]models.Tasklist{example.ID: example},
+		DB: *sqlx.DB{example.ID: example},
 	}
 }
 
-func (repo taskDB) GetAllTasks() ([]models.Tasklist, error) {
-	var tLists []models.Tasklist
-
-	for _, tList := range repo.DB {
-		tLists = append(tLists, tList)
+func (s *contactDB) GetTask(id uuid.UUID) (models.Contactlist, error) {
+	var t models.Contactlist
+	if err := s.DB.Get(&t, `SELECT * FROM task WHERE id = $1`, id); err != nil {
+		return models.Contactlist{}, fmt.Errorf("error gerring task: %w", err)
 	}
-	return tLists, nil
-
+	return t, nil
 }
 
-func (repo taskDB) GetTask(id string) (models.Tasklist, error) {
-	if tList, exist := repo.DB[id]; exist {
-		return tList, nil
+func (s *contactDB) GetAllTasks() ([]models.Tasklist, error) {
+	var tt []models.Contactlist
+	if err := s.DB.Select(&tt, `SELECT * FROM task`); err != nil {
+		return []models.Tasklist{}, fmt.Errorf("error gerring task: %w", err)
 	}
-
-	return models.Tasklist{}, errors.New("not found")
+	return tt, nil
 }
 
-func (repo taskDB) CreateTask(tList models.Tasklist) (models.Tasklist, error) {
-	if _, exist := repo.DB[tList.ID]; exist {
-		return models.Tasklist{}, errors.New("already exist")
+func (s *contactDB) CreateTask(t *models.Tasklist) error {
+	if err := s.DB.Get(t, `INSERT INTO task VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+		t.ID,
+		t.Name,
+		t.Status,
+		t.Priority,
+		t.CreatedBy,
+		t.CreatedBy,
+		t.DueDate); err != nil {
+		return fmt.Errorf("error creating task: %w ", err)
 	}
-
-	repo.DB[tList.ID] = tList
-
-	return tList, nil
-}
-
-func (repo taskDB) UpdateTask(tList models.Tasklist) error {
-	if _, exist := repo.DB[tList.ID]; !exist {
-		return errors.New("not found")
-	}
-
-	repo.DB[tList.ID] = tList
-
 	return nil
 }
 
-func (repo taskDB) DeleteTask(id string) error {
-	if _, exist := repo.DB[id]; !exist {
-		return errors.New("not found")
+func (s *contactDB) UpdateTask(t *models.Tasklist) error {
+	if err := s.DB.Get(t, `UPDATE contacts SET name =$1, status=$2, priority=$3, createat=$4, createby=$5, duedate=$6 WHERE id = $7 RETURNING`,
+		t.ID,
+		t.Name,
+		t.Status,
+		t.Priority,
+		t.CreatedAt,
+		t.CreatedBy,
+		t.DueDate); err != nil {
+		return fmt.Errorf("error updating task: %w ", err)
 	}
-
-	delete(repo.DB, id)
-
+	return nil
+}
+func (s *contactDB) DeleteTask(id uuid.UUID) error {
+	if _, err := s.DB.Exec(`DELETE FROM task WHERE id = %1`, id); err != nil {
+		return fmt.Errorf("error deleting task: %w", err)
+	}
 	return nil
 }
