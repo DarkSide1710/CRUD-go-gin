@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ed92cdf-28fc-4ef9-b500-9072cf843dd3" name="Changes" comment="/">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/http-server/handlers/routes.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/http-server/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/contact.go" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/handlers/contact.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/handlers/handlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/handlers/task.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/001_create_contact_table.down.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/001_create_contact_table.down.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/001_create_contact_table.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/001_create_contact_table.up.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tasklist.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/tasklist.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/contact.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/contact.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/repositories.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/repositories.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/task.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service_contact.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/service_contact.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service_task.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/service_task.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/services.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,9 +78,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="//" />
-    <MESSAGE value="/" />
     <MESSAGE value="/2" />
-    <option name="LAST_COMMIT_MESSAGE" value="/2" />
+    <MESSAGE value="/" />
+    <option name="LAST_COMMIT_MESSAGE" value="/" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
