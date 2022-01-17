@@ -5,7 +5,7 @@ type Tasklist struct {
 	Name      string `json:"name"`
 	Status    string `json:"status"`
 	Priority  string `json:"priority"`
-	CreatedAt string `json:"createdAt"`
-	CreatedBy string `json:"createdBy"`
-	DueDate   string `json:"dueDate"`
+	CreatedAt string `json:"created_at"`
+	CreatedBy string `json:"created_by"`
+	DueDate   string `json:"due_date"`
 }

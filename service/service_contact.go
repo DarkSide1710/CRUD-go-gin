@@ -10,9 +10,9 @@ type contactService struct {
 	Repository repository.Repository
 }
 
-func newContactService() *contactService {
+func newContactService(repo repository.Repository) *contactService {
 	return &contactService{
-		Repository: repository.NewRepository(),
+		Repository: repo,
 	}
 }
 

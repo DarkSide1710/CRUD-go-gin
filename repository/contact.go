@@ -10,7 +10,7 @@ type contactDB struct {
 	DB map[string]models.Contactlist
 }
 
-func NewRepository() *contactDB {
+func newContact() *contactDB {
 	example := models.Contactlist{
 		ID:        "1",
 		FirstName: "Example Name",

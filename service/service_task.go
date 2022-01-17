@@ -10,9 +10,9 @@ type taskService struct {
 	Repository repository.Repository
 }
 
-func newTaskService() *taskService {
+func newTaskService(repo repository.Repository) *taskService {
 	return &taskService{
-		Repository: repository.newRepositoryTask(),
+		Repository: repo,
 	}
 }
 

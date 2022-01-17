@@ -28,7 +28,7 @@ func NewRouter(platform services.Container) *gin.Engine {
 
 	h := Handlers{Platform: platform}
 
-	cList := router.Group("/cList")
+	cList := router.Group("/contact")
 	cList.GET("/", h.GetAllContacts)
 	cList.GET("/:id", h.GetContact)
 	cList.POST("/", h.CreateContact)
@@ -44,7 +44,7 @@ func NewrouterT(platform services.Container) *gin.Engine {
 
 	h := HandlersT{Platform: platform}
 
-	tList := router.Group("/t_list")
+	tList := router.Group("/task")
 	tList.GET("/", h.GetAllTasks)
 	tList.GET("/:id", h.GetTask)
 	tList.POST("/", h.CreateTask)

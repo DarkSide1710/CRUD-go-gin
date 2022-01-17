@@ -10,7 +10,7 @@ type taskDB struct {
 	DB map[string]models.Tasklist
 }
 
-func NewRepositoryTask() *taskDB {
+func newTask() *taskDB {
 	example := models.Tasklist{
 		ID:        "1",
 		Name:      "Example Tittle",
