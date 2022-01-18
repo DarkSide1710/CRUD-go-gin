@@ -11,23 +11,6 @@ func (h *Handlers) HelloWorld(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "Hello World!")
 }
 
-func (h *HandlersT) GetAllTasks(ctx *gin.Context) {
-	var response ResponseT
-
-	tList, err := h.Platform.Contact().GetAllContacts()
-	if err != nil {
-		response.Data = err.Error()
-		response.Status = http.StatusInternalServerError
-		ctx.JSON(http.StatusBadRequest, response)
-		return
-	}
-
-	response.Data = tList
-	response.Status = http.StatusOK
-
-	ctx.JSON(http.StatusOK, response)
-}
-
 func (h *Handlers) GetAllContacts(ctx *gin.Context) {
 	var response Response
 

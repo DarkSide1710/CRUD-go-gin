@@ -21,13 +21,13 @@ func (s taskService) GetAllTasks() ([]models.Tasklist, error) {
 }
 
 func (s taskService) GetTask(id string) (models.Tasklist, error) {
-	return s.Repository.Task().GetTask(id)
+	return s.Repository.Task().GetTask(uuid.MustParse(id))
 }
 
 func (s taskService) CreateTask(tList models.Tasklist) (models.Tasklist, int, error) {
 	tList.ID = uuid.New().String()
 
-	tList, err := s.Repository.Task().CreateTask(tList)
+	err := s.Repository.Task().CreateTask(&tList)
 	if err != nil {
 		return models.Tasklist{}, 400, err
 	}
@@ -36,7 +36,7 @@ func (s taskService) CreateTask(tList models.Tasklist) (models.Tasklist, int, er
 }
 
 func (s taskService) UpdateTask(tList models.Tasklist) (models.Tasklist, error) {
-	if err := s.Repository.Task().UpdateTask(tList); err != nil {
+	if err := s.Repository.Task().UpdateTask(&tList); err != nil {
 		return models.Tasklist{}, err
 	}
 
@@ -44,7 +44,7 @@ func (s taskService) UpdateTask(tList models.Tasklist) (models.Tasklist, error) 
 }
 
 func (s taskService) DeleteTask(id string) error {
-	if err := s.Repository.Task().DeleteTask(id); err != nil {
+	if err := s.Repository.Task().DeleteTask(uuid.MustParse(id)); err != nil {
 		return err
 	}
 

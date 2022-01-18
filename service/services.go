@@ -9,7 +9,7 @@ type Services struct {
 	task    *taskService
 }
 
-func New(repo repository.Repository) *Services {
+func New(repo *repository.Repositories) *Services {
 	return &Services{
 		repo: repo,
 	}

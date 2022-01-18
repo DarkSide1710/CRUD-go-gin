@@ -7,12 +7,25 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *HandlersT) HelloWorld(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, "Hello World!")
+func (h *Handlers) GetAllTasks(ctx *gin.Context) {
+	var response Response
+
+	tList, err := h.Platform.Task().GetAllTasks()
+	if err != nil {
+		response.Data = err.Error()
+		response.Status = http.StatusInternalServerError
+		ctx.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	response.Data = tList
+	response.Status = http.StatusOK
+
+	ctx.JSON(http.StatusOK, response)
 }
 
-func (h *HandlersT) GetTask(ctx *gin.Context) {
-	var response ResponseT
+func (h *Handlers) GetTask(ctx *gin.Context) {
+	var response Response
 	id := ctx.Param("id")
 
 	tList, err := h.Platform.Task().GetTask(id)
@@ -29,8 +42,8 @@ func (h *HandlersT) GetTask(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, response)
 }
 
-func (h *HandlersT) CreateTask(ctx *gin.Context) {
-	var response ResponseT
+func (t *Handlers) CreateTask(ctx *gin.Context) {
+	var response Response
 	var request models.Tasklist
 	ctx.Header("Content-Type", "application/json")
 
@@ -41,7 +54,7 @@ func (h *HandlersT) CreateTask(ctx *gin.Context) {
 		return
 	}
 
-	tList, code, err := h.Platform.Task().CreateTask(request)
+	tList, code, err := t.Platform.Task().CreateTask(request)
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = code
@@ -55,8 +68,8 @@ func (h *HandlersT) CreateTask(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, response)
 }
 
-func (h *HandlersT) UpdateTask(ctx *gin.Context) {
-	var response ResponseT
+func (t *Handlers) UpdateTask(ctx *gin.Context) {
+	var response Response
 	var request models.Tasklist
 	ctx.Header("Content-Type", "application/json")
 	id := ctx.Param("id")
@@ -70,7 +83,7 @@ func (h *HandlersT) UpdateTask(ctx *gin.Context) {
 
 	request.ID = id
 
-	tList, err := h.Platform.Task().UpdateTask(request)
+	tList, err := t.Platform.Task().UpdateTask(request)
 	if err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
@@ -84,11 +97,11 @@ func (h *HandlersT) UpdateTask(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, response)
 }
 
-func (h *HandlersT) DeleteTask(ctx *gin.Context) {
+func (t *Handlers) DeleteTask(ctx *gin.Context) {
 	var response Response
 	id := ctx.Param("id")
 
-	if err := h.Platform.Task().DeleteTask(id); err != nil {
+	if err := t.Platform.Task().DeleteTask(id); err != nil {
 		response.Data = err.Error()
 		response.Status = http.StatusInternalServerError
 		ctx.JSON(http.StatusInternalServerError, response)

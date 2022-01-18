@@ -12,39 +12,29 @@ type taskDB struct {
 	DB *sqlx.DB
 }
 
-func newTask() *taskDB {
-	example := models.Tasklist{
-		ID:        "1",
-		Name:      "Example Tittle",
-		Status:    "123",
-		Priority:  "324",
-		CreatedAt: "sad",
-		CreatedBy: "123",
-		DueDate:   "324",
-	}
-
+func newTask(db *sqlx.DB) *taskDB {
 	return &taskDB{
-		DB: *sqlx.DB{example.ID: example},
+		DB: db,
 	}
 }
 
-func (s *contactDB) GetTask(id uuid.UUID) (models.Contactlist, error) {
-	var t models.Contactlist
+func (s *taskDB) GetTask(id uuid.UUID) (models.Tasklist, error) {
+	var t models.Tasklist
 	if err := s.DB.Get(&t, `SELECT * FROM task WHERE id = $1`, id); err != nil {
-		return models.Contactlist{}, fmt.Errorf("error gerring task: %w", err)
+		return models.Tasklist{}, fmt.Errorf("error gerring task: %w", err)
 	}
 	return t, nil
 }
 
-func (s *contactDB) GetAllTasks() ([]models.Tasklist, error) {
-	var tt []models.Contactlist
+func (s *taskDB) GetAllTasks() ([]models.Tasklist, error) {
+	var tt []models.Tasklist
 	if err := s.DB.Select(&tt, `SELECT * FROM task`); err != nil {
 		return []models.Tasklist{}, fmt.Errorf("error gerring task: %w", err)
 	}
 	return tt, nil
 }
 
-func (s *contactDB) CreateTask(t *models.Tasklist) error {
+func (s *taskDB) CreateTask(t *models.Tasklist) error {
 	if err := s.DB.Get(t, `INSERT INTO task VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
 		t.ID,
 		t.Name,
@@ -58,8 +48,8 @@ func (s *contactDB) CreateTask(t *models.Tasklist) error {
 	return nil
 }
 
-func (s *contactDB) UpdateTask(t *models.Tasklist) error {
-	if err := s.DB.Get(t, `UPDATE contacts SET name =$1, status=$2, priority=$3, createat=$4, createby=$5, duedate=$6 WHERE id = $7 RETURNING`,
+func (s *taskDB) UpdateTask(t *models.Tasklist) error {
+	if err := s.DB.Get(t, `UPDATE task SET name =$1, status=$2, priority=$3, createat=$4, createby=$5, duedate=$6 WHERE id = $7 RETURNING`,
 		t.ID,
 		t.Name,
 		t.Status,
@@ -71,7 +61,7 @@ func (s *contactDB) UpdateTask(t *models.Tasklist) error {
 	}
 	return nil
 }
-func (s *contactDB) DeleteTask(id uuid.UUID) error {
+func (s *taskDB) DeleteTask(id uuid.UUID) error {
 	if _, err := s.DB.Exec(`DELETE FROM task WHERE id = %1`, id); err != nil {
 		return fmt.Errorf("error deleting task: %w", err)
 	}

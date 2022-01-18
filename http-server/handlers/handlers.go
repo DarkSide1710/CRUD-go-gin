@@ -14,19 +14,11 @@ type Response struct {
 	Data   interface{} `json:"data"`
 }
 
-type HandlersT struct {
-	Platform services.Container
-}
-
-type ResponseT struct {
-	Status int         `json:"status"`
-	Data   interface{} `json:"data"`
-}
-
 func NewRouter(platform services.Container) *gin.Engine {
 	router := gin.Default()
 
 	h := Handlers{Platform: platform}
+	//t := HandlersT{Platform: platform}
 
 	cList := router.Group("/contact")
 	cList.GET("/", h.GetAllContacts)
@@ -34,15 +26,6 @@ func NewRouter(platform services.Container) *gin.Engine {
 	cList.POST("/", h.CreateContact)
 	cList.PUT("/:id", h.UpdateContact)
 	cList.DELETE("/:id", h.DeleteContact)
-
-	router.GET("/", h.HelloWorld)
-
-	return router
-}
-func NewrouterT(platform services.Container) *gin.Engine {
-	router := gin.Default()
-
-	h := HandlersT{Platform: platform}
 
 	tList := router.Group("/task")
 	tList.GET("/", h.GetAllTasks)
