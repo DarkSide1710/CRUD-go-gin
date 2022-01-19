@@ -4,25 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ed92cdf-28fc-4ef9-b500-9072cf843dd3" name="Changes" comment="/">
-      <change afterPath="$PROJECT_DIR$/Docker" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="2ed92cdf-28fc-4ef9-b500-9072cf843dd3" name="Changes" comment="/migrate, DB and docker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http-server/handlers/contact.go" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/handlers/contact.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http-server/handlers/handlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/handlers/handlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http-server/handlers/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/handlers/task.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/001_create_contact_table.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/001_create_contact_table.up.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/interface.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres/contaact.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/contact.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/contact.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/inerface.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/inerface.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/repositories.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/repositories.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repository/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/task.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service_contact.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/service_contact.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service_task.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/service_task.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/services.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +92,8 @@
     <MESSAGE value="//" />
     <MESSAGE value="/2" />
     <MESSAGE value="/" />
-    <option name="LAST_COMMIT_MESSAGE" value="/" />
+    <MESSAGE value="/migrate, DB and docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="/migrate, DB and docker" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

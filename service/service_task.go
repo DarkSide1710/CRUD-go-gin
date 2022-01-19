@@ -25,8 +25,6 @@ func (s taskService) GetTask(id string) (models.Tasklist, error) {
 }
 
 func (s taskService) CreateTask(tList models.Tasklist) (models.Tasklist, int, error) {
-	tList.ID = uuid.New().String()
-
 	err := s.Repository.Task().CreateTask(&tList)
 	if err != nil {
 		return models.Tasklist{}, 400, err

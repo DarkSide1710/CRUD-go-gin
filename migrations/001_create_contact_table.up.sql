@@ -11,14 +11,14 @@ CREATE TABLE IF NOT EXISTS contacts (
 
 );
 
-CREATE TABLE IF NOT EXISTS tasks (
+CREATE TABLE IF NOT EXISTS task (
     "id" uuid DEFAULT uuid_generate_v4 (),
     "name" varchar NOT NULL,
     "status" varchar NOT NULL,
     "priority" varchar NOT NULL,
-    "createdat" varchar NOT NULL,
-    "createby" varchar,
-    "duedate" varchar NOT NULL,
-     FOREIGN KEY(createby) references contacts(id)
+    "created_at" varchar NOT NULL,
+    "created_by" uuid,
+    "due_date" varchar NOT NULL,
+    PRIMARY KEY ("id"),
+    FOREIGN KEY(created_by) references contacts(id) on delete cascade
 );
-

@@ -35,13 +35,14 @@ func (s *taskDB) GetAllTasks() ([]models.Tasklist, error) {
 }
 
 func (s *taskDB) CreateTask(t *models.Tasklist) error {
-	if err := s.DB.Get(t, `INSERT INTO task VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-		t.ID,
+	fmt.Println(t)
+
+	if _, err := s.DB.Exec(`INSERT INTO task (name, status, priority, created_at, created_by, due_date) VALUES ($1, $2, $3, $4, $5, $6)`,
 		t.Name,
 		t.Status,
 		t.Priority,
-		t.CreatedBy,
-		t.CreatedBy,
+		t.CreatedAt,
+		uuid.MustParse(t.CreatedBy).String(),
 		t.DueDate); err != nil {
 		return fmt.Errorf("error creating task: %w ", err)
 	}
@@ -49,7 +50,7 @@ func (s *taskDB) CreateTask(t *models.Tasklist) error {
 }
 
 func (s *taskDB) UpdateTask(t *models.Tasklist) error {
-	if err := s.DB.Get(t, `UPDATE task SET name =$1, status=$2, priority=$3, createat=$4, createby=$5, duedate=$6 WHERE id = $7 RETURNING`,
+	if err := s.DB.Get(t, `UPDATE task SET name =$1, status=$2, priority=$3, created_at=$4, created_by=$5, due_date=$6 WHERE id = $7 RETURNING`,
 		t.ID,
 		t.Name,
 		t.Status,
