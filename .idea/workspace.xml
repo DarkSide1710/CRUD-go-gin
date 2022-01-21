@@ -4,11 +4,45 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ed92cdf-28fc-4ef9-b500-9072cf843dd3" name="Changes" comment="/migrate, DB and docker">
+    <list default="true" id="2ed92cdf-28fc-4ef9-b500-9072cf843dd3" name="Changes" comment="/+task">
+      <change afterPath="$PROJECT_DIR$/docs/docs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/swagger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/swagger.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/http-server/handlers/contact.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/http-server/handlers/routes.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/http-server/handlers/task.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/http-server/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/http-server/view/json.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/models/contactlist.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/models/tasklist.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/repository/contact.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/repository/inerface.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/repository/repositories.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/repository/task.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/service/interface.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/service/service_contact.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/service/service_task.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/service/services.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/001_create_contact_table.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/001_create_contact_table.up.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/task.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service_task.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/service_task.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-server/handlers/contact.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-server/handlers/handlers.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-server/handlers/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/http-server/handlers/resources.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-server/handlers/task.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-server/server.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/contactlist.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/tasklist.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/contact.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/inerface.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/repositories.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/task.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/interface.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service_contact.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service_task.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/services.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,14 +97,35 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.watchers.conflict.with.on.save.actions.check.performed" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../git/todo-app" />
     <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/http-server" />
-      <recent name="$PROJECT_DIR$/repository" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/cmd" />
+      <recent name="$PROJECT_DIR$/http-server/handlers" />
+      <recent name="$PROJECT_DIR$/http-server/routes" />
+      <recent name="$PROJECT_DIR$/app/repository" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="SwaggerCodegen">
+      <option name="activeConfigurationType" value="FILE" />
+      <option name="configurationPath" value="" />
+      <option name="customJreEnabled" value="false" />
+      <option name="customTemplatesPath" value="" />
+      <option name="enableDebugLogging" value="false" />
+      <option name="generateToPath" value="$PROJECT_DIR$/gen" />
+      <option name="generationParameters">
+        <list />
+      </option>
+      <option name="generatorPath" value="https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0/openapi-generator-cli-5.0.0.jar" />
+      <option name="jdkPath" value="" />
+      <option name="language" value="java" />
+      <option name="specificationPath" value="$PROJECT_DIR$/docs/swagger.json" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,7 +148,8 @@
     <MESSAGE value="/2" />
     <MESSAGE value="/" />
     <MESSAGE value="/migrate, DB and docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="/migrate, DB and docker" />
+    <MESSAGE value="/+task" />
+    <option name="LAST_COMMIT_MESSAGE" value="/+task" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

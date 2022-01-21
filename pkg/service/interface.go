@@ -1,6 +1,6 @@
 package services
 
-import "DarkSide1710/CRUD-go-gin/models"
+import "DarkSide1710/CRUD-go-gin/pkg/models"
 
 type Container interface {
 	Contact() Contact

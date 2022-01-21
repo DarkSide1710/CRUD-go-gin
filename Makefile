@@ -4,4 +4,7 @@ postgres:
 #	docker run --rm -ti --network host adminer
 
 migrate:
-	migrate -path ./migrations -database 'postgres://postgres:12345@localhost:5432/postgres?sslmode=disable' up
+	migrate -path ./migrations -database 'postgres://postgres:12345@localhost:5532/crud?sslmode=disable' up
+
+swag-init:
+	swag init

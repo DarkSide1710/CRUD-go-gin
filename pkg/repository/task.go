@@ -5,7 +5,7 @@ import (
 	"github.com/google/uuid"
 	sqlx "github.com/jmoiron/sqlx"
 
-	"DarkSide1710/CRUD-go-gin/models"
+	"DarkSide1710/CRUD-go-gin/pkg/models"
 )
 
 type taskDB struct {

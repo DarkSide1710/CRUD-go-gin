@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"DarkSide1710/CRUD-go-gin/models"
+	"DarkSide1710/CRUD-go-gin/pkg/models"
 	"github.com/google/uuid"
 )
 

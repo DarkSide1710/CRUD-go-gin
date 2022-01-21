@@ -1,6 +1,6 @@
 package services
 
-import "DarkSide1710/CRUD-go-gin/repository"
+import "DarkSide1710/CRUD-go-gin/pkg/repository"
 
 type Services struct {
 	repo repository.Repository

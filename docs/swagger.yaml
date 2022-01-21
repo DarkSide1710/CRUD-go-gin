@@ -1,0 +1,425 @@
+definitions:
+  handlers.contactRequest:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      phone:
+        type: string
+      position:
+        type: string
+    required:
+    - email
+    - first_name
+    - last_name
+    - phone
+    - position
+    type: object
+  handlers.taskRequest:
+    properties:
+      created_at:
+        type: string
+      created_by:
+        type: string
+      due_date:
+        type: string
+      name:
+        type: string
+      priority:
+        type: string
+      status:
+        type: string
+    required:
+    - created_at
+    - created_by
+    - due_date
+    - name
+    - priority
+    - status
+    type: object
+  models.Contactlist:
+    properties:
+      email:
+        type: string
+      firstName:
+        type: string
+      id:
+        type: string
+      lastName:
+        type: string
+      phone:
+        type: string
+      position:
+        type: string
+    type: object
+  models.Tasklist:
+    properties:
+      created_at:
+        type: string
+      created_by:
+        type: string
+      due_date:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      priority:
+        type: string
+      status:
+        type: string
+    type: object
+  view.R:
+    properties:
+      data:
+        description: data
+      error_code:
+        description: error_code
+        type: integer
+      error_note:
+        description: error_note
+        type: string
+      status:
+        description: success
+        type: string
+    type: object
+info:
+  contact: {}
+  title: Todo APP API
+  version: "1.8"
+paths:
+  /contact:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Contactlist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - contact
+    post:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Params
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.contactRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Contactlist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - contact
+  /contact/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Contact ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Contactlist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - contact
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Contactlist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - contact
+    put:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Params
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.contactRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Contactlist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - contact
+  /task:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Tasklist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - task
+    post:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Params
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.taskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Tasklist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - task
+  /task/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Tasklist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - task
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Tasklist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - task
+    put:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/view.R'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.Tasklist'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/view.R'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/view.R'
+      summary: Show an account
+      tags:
+      - task
+swagger: "2.0"

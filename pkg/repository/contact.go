@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"DarkSide1710/CRUD-go-gin/models"
+	"DarkSide1710/CRUD-go-gin/pkg/models"
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
@@ -57,8 +57,9 @@ func (s *contactDB) UpdateContact(t *models.Contactlist) error {
 	}
 	return nil
 }
+
 func (s *contactDB) DeleteContact(id uuid.UUID) error {
-	if _, err := s.DB.Exec(`DELETE FROM contacts WHERE id = %1`, id); err != nil {
+	if _, err := s.DB.Exec(`DELETE FROM contacts WHERE id=$1`, id); err != nil {
 		return fmt.Errorf("error deleting contact: %w", err)
 	}
 	return nil

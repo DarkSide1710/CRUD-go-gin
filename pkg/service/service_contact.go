@@ -1,8 +1,8 @@
 package services
 
 import (
-	"DarkSide1710/CRUD-go-gin/models"
-	"DarkSide1710/CRUD-go-gin/repository"
+	"DarkSide1710/CRUD-go-gin/pkg/models"
+	"DarkSide1710/CRUD-go-gin/pkg/repository"
 	"github.com/google/uuid"
 )
 
