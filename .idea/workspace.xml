@@ -4,45 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ed92cdf-28fc-4ef9-b500-9072cf843dd3" name="Changes" comment="/+task">
-      <change afterPath="$PROJECT_DIR$/docs/docs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/swagger.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/swagger.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/http-server/handlers/contact.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/http-server/handlers/routes.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/http-server/handlers/task.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/http-server/server.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/http-server/view/json.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/models/contactlist.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/models/tasklist.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/repository/contact.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/repository/inerface.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/repository/repositories.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/repository/task.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/service/interface.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/service/service_contact.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/service/service_task.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/service/services.go" afterDir="false" />
+    <list default="true" id="2ed92cdf-28fc-4ef9-b500-9072cf843dd3" name="Changes" comment="/+swagger">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http-server/handlers/contact.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/http-server/handlers/handlers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/http-server/handlers/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/http-server/handlers/resources.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http-server/handlers/task.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/http-server/server.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/contactlist.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/tasklist.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/contact.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/inerface.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/repositories.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/task.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/interface.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service_contact.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service_task.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/services.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +113,8 @@
     <MESSAGE value="/" />
     <MESSAGE value="/migrate, DB and docker" />
     <MESSAGE value="/+task" />
-    <option name="LAST_COMMIT_MESSAGE" value="/+task" />
+    <MESSAGE value="/+swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="/+swagger" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

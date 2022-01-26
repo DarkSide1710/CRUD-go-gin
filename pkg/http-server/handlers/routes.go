@@ -1,8 +1,11 @@
 package handlers
 
 import (
-	services "DarkSide1710/CRUD-go-gin/service"
+	_ "DarkSide1710/CRUD-go-gin/docs"
+	"DarkSide1710/CRUD-go-gin/pkg/service"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 type Handlers struct {
@@ -14,8 +17,10 @@ type Response struct {
 	Data   interface{} `json:"data"`
 }
 
+// @BasePath ./
 func NewRouter(platform services.Container) *gin.Engine {
 	router := gin.Default()
+	router.Use(gin.Logger(), gin.Recovery())
 
 	h := Handlers{Platform: platform}
 	//t := HandlersT{Platform: platform}
@@ -35,6 +40,6 @@ func NewRouter(platform services.Container) *gin.Engine {
 	tList.DELETE("/:id", h.DeleteTask)
 
 	router.GET("/", h.HelloWorld)
-
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	return router
 }
